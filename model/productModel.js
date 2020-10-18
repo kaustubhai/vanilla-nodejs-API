@@ -6,6 +6,15 @@ const findAll = () => {
     }))
 }
 
+const findById = (id) => {
+    const product = products.filter((p) => p.id === id)
+    if (product)
+        return (new Promise((resolve, reject) => {
+            resolve(product)
+        }))
+}
+
 module.exports = {
-    findAll
+    findAll,
+    findById
 }
