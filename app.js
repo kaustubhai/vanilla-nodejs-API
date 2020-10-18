@@ -5,6 +5,9 @@ const server = http.createServer((req, res) => {
     if (req.url === '/api/products' && req.method === 'GET') {
         controller.getProducts(req, res)
     }
+    else if (req.url === '/api/products' && req.method === 'POST') {
+        controller.postProducts(req, res);
+    }
     else if (req.url.match(/\/api\/product\/[0-9]+$/) && req.method === 'GET') {
         const id = req.url.split('/')[3]
         controller.getProduct(req, res, id)

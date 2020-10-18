@@ -28,5 +28,17 @@
     "name": "Logitech G-Series Gaming Mouse",
     "description": "Get a better handle on your games with this Logitech LIGHTSYNC gaming mouse. The six programmable buttons allow customization for a smooth playing experience",
     "price": 49.99
+  },
+  {
+    "id": 6,
+    "name": "Realme 9 pro",
+    "description": "Great Phone with Great specs but not so Great Price. Flagsip level specs now at cheap price",
+    "price": 19990
+  },
+  {
+    "id": 7,
+    "name": "Realme 7 pro",
+    "description": "Great Phone with Great specs but not so Great Price. Flagsip level specs now at cheap price",
+    "price": 19990
   }
 ]

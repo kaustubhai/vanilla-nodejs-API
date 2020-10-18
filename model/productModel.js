@@ -1,4 +1,5 @@
 const products = require('../data/products.json')
+const { writeToFile } = require('../utils')
 
 const findAll = () => {
     return (new Promise((resolve, reject) => {
@@ -14,7 +15,18 @@ const findById = (id) => {
         }))
 }
 
+const saveData = (obj) => {
+    return new Promise((resolve, reject) => {
+        obj = {id: products.length+1, ...obj}
+        products.push(obj)
+        console.log(products)
+        writeToFile('./data/products.json', products)
+        resolve(obj)
+    })
+}
+
 module.exports = {
     findAll,
-    findById
+    findById,
+    saveData
 }

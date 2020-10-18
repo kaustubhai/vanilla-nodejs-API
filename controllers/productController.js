@@ -1,4 +1,5 @@
 const Products = require('../model/productModel')
+const { bufferToData } = require('../utils')
 
 const getProducts = async (req, res) => {
     try {
@@ -34,6 +35,17 @@ const getProduct = async (req, res, id) => {
     }
 }
 
+const postProducts = async (req, res) => {
+    const products = await Products.findAll()
+    let body = await bufferToData(req)
+    req.on('end', () => {
+        const obj = JSON.parse(body)
+        Products.saveData(obj)
+        res.writeHead(200, { 'content-type': 'application/json' })
+        res.end(JSON.stringify(obj))
+    })
+}
+
 module.exports = {
-    getProducts, getProduct
+    getProducts, getProduct, postProducts
 }
