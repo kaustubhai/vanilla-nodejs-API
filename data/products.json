@@ -13,9 +13,9 @@
   },
   {
     "id": "3",
-    "name": "Cannon EOS 80D DSLR Camera",
-    "description": "Characterized by versatile imaging specs, the Canon EOS 80D further clarifies itself using a pair of robust focusing systems and an intuitive design",
-    "price": 929.99
+    "name": "Realme 2 pro",
+    "description": "Waste Phone. Very bad phone. Very Excellent user",
+    "price": 11500
   },
   {
     "id": "4",
@@ -24,21 +24,9 @@
     "price": 399.99
   },
   {
-    "id": "5",
-    "name": "Logitech G-Series Gaming Mouse",
-    "description": "Get a better handle on your games with this Logitech LIGHTSYNC gaming mouse. The six programmable buttons allow customization for a smooth playing experience",
-    "price": 49.99
-  },
-  {
-    "id": 6,
-    "name": "Realme 9 pro",
+    "id": "6",
+    "name": "Redmi 9 prime",
     "description": "Great Phone with Great specs but not so Great Price. Flagsip level specs now at cheap price",
-    "price": 19990
-  },
-  {
-    "id": 7,
-    "name": "Realme 7 pro",
-    "description": "Great Phone with Great specs but not so Great Price. Flagsip level specs now at cheap price",
-    "price": 19990
+    "price": 1000
   }
 ]

@@ -12,6 +12,14 @@ const server = http.createServer((req, res) => {
         const id = req.url.split('/')[3]
         controller.getProduct(req, res, id)
     }
+    else if (req.url.match(/\/api\/product\/[0-9]+$/) && req.method === 'PUT') {
+        const id = req.url.split('/')[3]
+        controller.updateProduct(req, res, id)
+    }
+    else if (req.url.match(/\/api\/product\/[0-9]+$/) && req.method === 'DELETE') {
+        const id = req.url.split('/')[3]
+        controller.deleteProduct(req, res, id)
+    }
     else {
         res.writeHead(404, { 'content-type': 'application/json' })
         res.end(JSON.stringify({message: 'Invalid URL. Go Back'}))
