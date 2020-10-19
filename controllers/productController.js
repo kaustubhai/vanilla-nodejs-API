@@ -6,7 +6,7 @@ const getProducts = async (req, res) => {
         const products = await Products.findAll()
         if (!products || products.length === 0) {
             res.writeHead(404, { 'content-type': 'application/json' })
-            res.end(JSON.stringify({ message: 'Invalid URL. Go Back' }))
+            res.end(JSON.stringify({ message: 'No product found' }))
         }
         else {
             res.writeHead(200, { 'content-type': 'application/json' })
@@ -23,7 +23,7 @@ const getProduct = async (req, res, id) => {
         const product = await Products.findById(id)
         if (!product || product.length === 0) {
             res.writeHead(404, { 'content-type': 'application/json' })
-            res.end(JSON.stringify({ message: 'Invalid URL. Go Back' }))
+            res.end(JSON.stringify({ message: 'No product with such ID found' }))
         }
         else {
             res.writeHead(200, { 'content-type': 'application/json' })
@@ -37,11 +37,11 @@ const getProduct = async (req, res, id) => {
 
 const postProducts = async (req, res) => {
     let body = await bufferToData(req)
-    req.on('end', () => {
+    req.on('end', async () => {
         const obj = JSON.parse(body)
-        Products.saveData(obj)
+        const p = await Products.saveData(obj)
         res.writeHead(200, { 'content-type': 'application/json' })
-        res.end(JSON.stringify(obj))
+        res.end(JSON.stringify(p))
     })
 }
 
@@ -50,7 +50,7 @@ const updateProduct = async (req, res, id) => {
         const product = await Products.findById(id)
         if (!product || product.length === 0) {
             res.writeHead(404, { 'content-type': 'application/json' })
-            res.end(JSON.stringify({ message: 'Invalid URL. Go Back' }))
+            res.end(JSON.stringify({ message: 'No product with such ID found' }))
         }
         else {
             // const obj = await Products.updateData(product)
@@ -58,11 +58,11 @@ const updateProduct = async (req, res, id) => {
             // res.end(JSON.stringify(obj))
             
             let body = await bufferToData(req)
-            req.on('end', () => {
+            req.on('end', async () => {
                 const obj = JSON.parse(body)
-                Products.updateData(obj, id)
+                const p = await Products.updateData(obj, id)
                 res.writeHead(200, { 'content-type': 'application/json' })
-                res.end(JSON.stringify(obj))
+                res.end(JSON.stringify(p))
             })
         }
     }
@@ -76,7 +76,7 @@ const deleteProduct = async (req, res, id) => {
         const product = await Products.findById(id)
         if (!product || product.length === 0) {
             res.writeHead(404, { 'content-type': 'application/json' })
-            res.end(JSON.stringify({ message: 'Invalid URL. Go Back' }))
+            res.end(JSON.stringify({ message: 'No product with such ID found' }))
         }
         else {
             const obj = await Products.deleteData(id)

@@ -1,5 +1,6 @@
 const products = require('../data/products.json')
 const { writeToFile } = require('../utils')
+const uuid = require('uuid')
 
 const findAll = () => {
     return (new Promise((resolve, reject) => {
@@ -17,7 +18,7 @@ const findById = (id) => {
 
 const saveData = (obj) => {
     return new Promise((resolve, reject) => {
-        obj = {id: JSON.stringify(products.length+1), ...obj}
+        obj = {id: uuid.v4(), ...obj}
         products.push(obj)
         writeToFile('./data/products.json', products)
         resolve(obj)
